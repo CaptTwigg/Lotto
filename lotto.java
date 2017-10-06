@@ -14,4 +14,11 @@ public static int[] userNumbers() throws FileNotFoundException {
 	for (int i = 0; i < 6; i++) userArray[i] = getNumbers.nextInt();
 	return userArray;
 }
+public static int compare(){
+	int rightCount = 0;
+	for (int i = 0; i < 6; i++) {
+		if (userNumbers()[i] == drawNumbers()[i]) rightCount++;
+	}
+	return rightCount;
+}
 }
