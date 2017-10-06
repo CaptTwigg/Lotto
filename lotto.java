@@ -3,8 +3,10 @@ import java.io.*;
 
 public class lotto {
 public static void main(String[] args) throws Exception {
-	int[] go = drawNumbers();
-	for (int i : go) System.out.println(i);
+	System.out.println("right " + compare());
+	for (int i : drawNumbers()) System.out.printf("%d ", i);
+	// System.out.println();
+	// for (int i : userNumbers()) System.out.printf("%d ", i);
 }
 public static int[] userNumbers() throws Exception {
 	Scanner getNumbers = new Scanner(new File("numbers.dat"));
@@ -14,8 +16,11 @@ public static int[] userNumbers() throws Exception {
 }
 public static int compare() throws Exception {
 	int rightCount = 0;
+	int[] holdArray = drawNumbers();
 	for (int i = 0; i < 6; i++) {
-		if (userNumbers()[i] == drawNumbers()[i]) rightCount++;
+		for (int j = 0; j < 6; j++) {
+			if (userNumbers()[i] == holdArray[j]) rightCount++;
+		}
 	}
 	return rightCount;
 }
