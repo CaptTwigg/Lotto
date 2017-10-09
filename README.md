@@ -1,4 +1,4 @@
-##Lotto - Group Exercise KEA Computer Science 1.Semester
+## Lotto - Group Exercise KEA Computer Science 1.Semester
 Lotto
 The program you are going to make now is simulating a Lotto drawing.
 When it runs it will pick 6 random numbers and compare it to some user chosen numbers, and tell if and what is won.
