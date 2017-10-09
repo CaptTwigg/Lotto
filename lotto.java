@@ -5,7 +5,9 @@ public class lotto {
 public static void main(String[] args) throws Exception {
 	int[] holdArray = drawNumbers();
 	// System.out.println("right " + compare());
+
 	System.out.println(winCheck(compare(holdArray)));
+	// chooseNumbers();
 }
 public static int[] userNumbers() throws Exception {
 	Scanner getNumbers = new Scanner(new File("numbers.dat"));     //Read file to get user numbers
@@ -24,8 +26,6 @@ public static int compare(int[] holdArray) throws Exception {
 	System.out.print(Arrays.toString(holdArray));
 	return rightCount;
 }
-public static void noUserDup(){
-}
 public static int[] drawNumbers() throws Exception {
 	Random rand = new Random();             //random object declare
 	int[] drawArray = new int [6];          //Array for drawn numbers
@@ -38,7 +38,38 @@ public static int[] drawNumbers() throws Exception {
 	Arrays.sort(drawArray);         //Sort array for pleasure
 	return(drawArray);
 }
-public static void chooseNumbers(){
+public static int[] chooseNumbers() throws Exception {
+	Scanner scan = new Scanner(System.in);
+	int number;
+	int[] userArray = new int[6];
+
+	System.out.print("Want your own numbers or go for standard? y/n ");
+	String choose = scan.next();
+
+	if (choose.equals("y")) {
+		System.out.println("Pick a number from 1 to 20");
+
+		for (int i = 0; i < 6; i++) {
+			System.out.print("Type a number: ");
+			number = scan.nextInt();
+			userArray[i] = number;
+
+			if (number < 0 || number > 20) {
+				System.out.println("Number is not from 1-20, pick a new");
+				i--;
+			}
+			for (int j = 0; j < i; j++) {
+				if (userArray[i] == userArray[j]) {
+					System.out.println("Number already exist, pick a new");
+					i--;
+				}
+			}
+		}
+		PrintStream stream = new PrintStream(new File("numbers.dat"));
+		for (int i : userArray) stream.print(i + " ");
+	} else userArray = userNumbers();
+
+	return userArray;
 }
 public static String winCheck(int a){
 	switch (a) {
@@ -50,5 +81,8 @@ public static String winCheck(int a){
 	case 5: return "You win " + 50;
 	}
 	return "You win " + 60;
+}
+// Print all statitics from lotto
+public static void Print(){
 }
 }
