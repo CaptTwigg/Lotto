@@ -1,4 +1,4 @@
-otto - Group Exercise KEA Computer Science 1.Semester
+Lotto - Group Exercise KEA Computer Science 1.Semester
 
 # Lotto
 
