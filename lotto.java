@@ -32,10 +32,12 @@ public static int[] drawNumbers() throws Exception {
 	for (int i = 0; i < 6; i++) {
 		drawArray[i] = rand.nextInt(20) + 1;    //Add random value between 1-20 to array
 		for (int j = 0; j < i; j++) {
-			if (drawArray[i] == drawArray[j]) i--;    // check if numbers already exist -- yes jump 1 back in array and add new number
+			if (drawArray[i] == drawArray[j]) i--;    // check if numbers already exist - if yes jump 1 back in array and add new number
 		}
 	}
 	Arrays.sort(drawArray);         //Sort array for pleasure
 	return(drawArray);
+}
+public static void chooseNumbers(){
 }
 }
