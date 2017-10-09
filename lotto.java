@@ -3,7 +3,9 @@ import java.io.*;
 
 public class lotto {
 public static void main(String[] args) throws Exception {
+	int[] holdArray = drawNumbers();
 	// System.out.println("right " + compare());
+	System.out.println(winCheck(compare(holdArray)));
 }
 public static int[] userNumbers() throws Exception {
 	Scanner getNumbers = new Scanner(new File("numbers.dat"));     //Read file to get user numbers
@@ -12,10 +14,8 @@ public static int[] userNumbers() throws Exception {
 	Arrays.sort(userArray);         //Sort array for pleasure
 	return userArray;
 }
-public static int compare() throws Exception {
+public static int compare(int[] holdArray) throws Exception {
 	int rightCount = 0;
-	int[] holdArray = drawNumbers();
-
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 6; j++) {
 			if (userNumbers()[i] == holdArray[j]) rightCount++;
@@ -39,5 +39,16 @@ public static int[] drawNumbers() throws Exception {
 	return(drawArray);
 }
 public static void chooseNumbers(){
+}
+public static String winCheck(int a){
+	switch (a) {
+	case 0: return "You win " + 0;
+	case 1: return "You win " + 10;
+	case 2: return "You win " + 20;
+	case 3: return "You win " + 30;
+	case 4: return "You win " + 40;
+	case 5: return "You win " + 50;
+	}
+	return "You win " + 60;
 }
 }
