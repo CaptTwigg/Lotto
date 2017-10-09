@@ -4,23 +4,23 @@ import java.io.*;
 public class lotto {
 public static void main(String[] args) throws Exception {
 	int[] holdArray = drawNumbers();
+	int[] holdUserArray = userNumbers();
 	// System.out.println("right " + compare());
 
-	System.out.println(winCheck(compare(holdArray)));
-	// chooseNumbers();
+	System.out.println(winCheck(compare(holdArray, holdUserArray)));
 }
-public static int[] userNumbers() throws Exception {
-	Scanner getNumbers = new Scanner(new File("numbers.dat"));     //Read file to get user numbers
-	int[] userArray = new int[6];                                  //Create array for lotto numbers with 6 indexes
-	for (int i = 0; i < 6; i++) userArray[i] = getNumbers.nextInt();        //Loop through array and add value from numbers.dat file
-	Arrays.sort(userArray);         //Sort array for pleasure
-	return userArray;
-}
-public static int compare(int[] holdArray) throws Exception {
+// public static int[] userNumbers() throws Exception {
+//      Scanner getNumbers = new Scanner(new File("numbers.dat"));     //Read file to get user numbers
+//      int[] userArray = new int[6];                                  //Create array for lotto numbers with 6 indexes
+//      for (int i = 0; i < 6; i++) userArray[i] = getNumbers.nextInt();        //Loop through array and add value from numbers.dat file
+//      Arrays.sort(userArray);         //Sort array for pleasure
+//      return userArray;
+// }
+public static int compare(int[] holdArray, int[] holdUserArray) throws Exception {
 	int rightCount = 0;
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 6; j++) {
-			if (userNumbers()[i] == holdArray[j]) rightCount++;
+			if (holdUserArray[i] == holdArray[j]) rightCount++;
 		}
 	}
 	System.out.print(Arrays.toString(holdArray));
@@ -38,12 +38,12 @@ public static int[] drawNumbers() throws Exception {
 	Arrays.sort(drawArray);         //Sort array for pleasure
 	return(drawArray);
 }
-public static int[] chooseNumbers() throws Exception {
+public static int[] userNumbers() throws Exception {
 	Scanner scan = new Scanner(System.in);
 	int number;
 	int[] userArray = new int[6];
 
-	System.out.print("Want your own numbers or go for standard? y/n ");
+	System.out.print("Want your own numbers? y/n ");
 	String choose = scan.next();
 
 	if (choose.equals("y")) {
@@ -67,8 +67,10 @@ public static int[] chooseNumbers() throws Exception {
 		}
 		PrintStream stream = new PrintStream(new File("numbers.dat"));
 		for (int i : userArray) stream.print(i + " ");
-	} else userArray = userNumbers();
-
+	} else {
+		Scanner getNumbers = new Scanner(new File("numbers.dat"));
+		for (int i = 0; i < 6; i++) userArray[i] = getNumbers.nextInt();
+	}
 	return userArray;
 }
 public static String winCheck(int a){
