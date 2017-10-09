@@ -9,13 +9,7 @@ public static void main(String[] args) throws Exception {
 
 	System.out.println(winCheck(compare(holdArray, holdUserArray)));
 }
-// public static int[] userNumbers() throws Exception {
-//      Scanner getNumbers = new Scanner(new File("numbers.dat"));     //Read file to get user numbers
-//      int[] userArray = new int[6];                                  //Create array for lotto numbers with 6 indexes
-//      for (int i = 0; i < 6; i++) userArray[i] = getNumbers.nextInt();        //Loop through array and add value from numbers.dat file
-//      Arrays.sort(userArray);         //Sort array for pleasure
-//      return userArray;
-// }
+
 public static int compare(int[] holdArray, int[] holdUserArray) throws Exception {
 	int rightCount = 0;
 	for (int i = 0; i < 6; i++) {
@@ -26,6 +20,7 @@ public static int compare(int[] holdArray, int[] holdUserArray) throws Exception
 	System.out.print(Arrays.toString(holdArray));
 	return rightCount;
 }
+
 public static int[] drawNumbers() throws Exception {
 	Random rand = new Random();             //random object declare
 	int[] drawArray = new int [6];          //Array for drawn numbers
@@ -38,6 +33,7 @@ public static int[] drawNumbers() throws Exception {
 	Arrays.sort(drawArray);         //Sort array for pleasure
 	return(drawArray);
 }
+
 public static int[] userNumbers() throws Exception {
 	Scanner scan = new Scanner(System.in);
 	int number;
@@ -73,6 +69,7 @@ public static int[] userNumbers() throws Exception {
 	}
 	return userArray;
 }
+
 public static String winCheck(int a){
 	switch (a) {
 	case 0: return "You win " + 0;
