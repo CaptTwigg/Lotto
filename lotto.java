@@ -6,8 +6,8 @@ public static void main(String[] args) throws Exception {
 	int[] holdArray = drawNumbers();
 	int[] holdUserArray = userNumbers();
 	// System.out.println("right " + compare());
-
-	System.out.println(winCheck(compare(holdArray, holdUserArray)));
+	Print(holdUserArray, holdArray, compare(holdArray, holdUserArray));
+	// System.out.println(winCheck(compare(holdArray, holdUserArray)));
 }
 
 public static int compare(int[] holdArray, int[] holdUserArray) throws Exception {
@@ -17,7 +17,7 @@ public static int compare(int[] holdArray, int[] holdUserArray) throws Exception
 			if (holdUserArray[i] == holdArray[j]) rightCount++;
 		}
 	}
-	System.out.print(Arrays.toString(holdArray));
+	// System.out.print(Arrays.toString(holdArray));
 	return rightCount;
 }
 
@@ -82,6 +82,17 @@ public static String winCheck(int a){
 	return "You win " + 60;
 }
 // Print all statitics from lotto
-public static void Print(){
+public static void Print(int[] userArray, int[] holdArray, int win) throws Exception {
+	System.out.print("Your numbers are: \t");
+	for (int i : userArray) System.out.printf("%-3d", i);
+
+
+	System.out.printf("\nDrawn numbers are: \t");
+	for (int i = 0; i < 6; i++) {
+		Thread.sleep(1000);
+		System.out.printf("%-3d", holdArray[i]);
+	}
+	System.out.println();
+	System.out.println(winCheck(win));
 }
 }
