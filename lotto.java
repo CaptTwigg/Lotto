@@ -3,10 +3,10 @@ import java.io.*;
 
 public class lotto {
 public static void main(String[] args) throws Exception {
-	int playYes = 0;
+	int secondGame = 0;
 
-	while (play(playYes)) {                 //Wanna play again loop
-		playYes = 1;
+	while (play(secondGame)) {                 //Wanna play again loop
+		secondGame = 1;
 		int[] holdArray = drawNumbers();                // Create new array from drawNumbers method, done so the array is the same in other methods
 		int[] holdUserArray = userNumbers();            // Create new array from userNumbers method,				 -||-
 		Print(holdUserArray, holdArray, compare(holdArray, holdUserArray));             // Printing drawn nubmers, user nubmers and win
@@ -23,7 +23,7 @@ public static int[] userNumbers() throws Exception {
 
 	//If yes user want own numbers, go through loop to get number between 1-20 and check if number is duplicate or already exist
 	if (choose.equals("y")) {
-		System.out.println("Pick a number from 1 to 20");
+		System.out.println("Pick 6 non-identical numbers between 1 to 20");
 
 		for (int i = 0; i < 6; i++) {
 			System.out.print("Type a number: ");
@@ -104,10 +104,10 @@ public static void Print(int[] userArray, int[] holdArray, int win) throws Excep
 	System.out.println(winCheck(win));              //Prints win amount
 }
 
-public static boolean play(int playYes){
+public static boolean play(int secondGame){
 	Scanner scan = new Scanner(System.in);
 
-	if (playYes == 0) System.out.print("Wanna play? y/n: "); // If first game
+	if (secondGame == 0) System.out.print("Wanna play? y/n: "); // If first game
 	else System.out.print("Wanna play again? y/n: ");       //if !first game
 	String answear = scan.next();
 
