@@ -4,6 +4,7 @@ import java.io.*;
 public class lotto {
 public static void main(String[] args) throws Exception {
 	int playYes = 0;
+
 	while (play(playYes)) {                 //Wanna play again loop
 		playYes = 1;
 		int[] holdArray = drawNumbers();                // Create new array from drawNumbers method, done so the array is the same in other methods
