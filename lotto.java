@@ -21,7 +21,7 @@ public static int[] userNumbers() throws Exception {
 	System.out.print("Want your own numbers? y/n ");
 	String choose = scan.next();
 
-	//Yes user want own numbers, go through loop to get number between 1-20 and check if number is duplicate or already exist
+	//If yes user want own numbers, go through loop to get number between 1-20 and check if number is duplicate or already exist
 	if (choose.equals("y")) {
 		System.out.println("Pick a number from 1 to 20");
 
@@ -47,6 +47,7 @@ public static int[] userNumbers() throws Exception {
 		Scanner getNumbers = new Scanner(new File("numbers.dat"));              //if !choosen own number get numbers from numbers.dat file and add to array
 		for (int i = 0; i < 6; i++) userArray[i] = getNumbers.nextInt();
 	}
+	Arrays.sort(userArray);
 	return userArray;
 }
 
@@ -107,7 +108,7 @@ public static boolean play(int playYes){
 	Scanner scan = new Scanner(System.in);
 
 	if (playYes == 0) System.out.print("Wanna play? y/n: "); // If first game
-	else System.out.print("Wanna play agian? y/n: ");       //if !first game
+	else System.out.print("Wanna play again? y/n: ");       //if !first game
 	String answear = scan.next();
 
 	if (!answear.equals("y")) return false; //if ! "y" stop while loop at top
