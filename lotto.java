@@ -5,33 +5,7 @@ public class lotto {
 public static void main(String[] args) throws Exception {
 	int[] holdArray = drawNumbers();
 	int[] holdUserArray = userNumbers();
-	// System.out.println("right " + compare());
 	Print(holdUserArray, holdArray, compare(holdArray, holdUserArray));
-	// System.out.println(winCheck(compare(holdArray, holdUserArray)));
-}
-
-public static int compare(int[] holdArray, int[] holdUserArray) throws Exception {
-	int rightCount = 0;
-	for (int i = 0; i < 6; i++) {
-		for (int j = 0; j < 6; j++) {
-			if (holdUserArray[i] == holdArray[j]) rightCount++;
-		}
-	}
-	// System.out.print(Arrays.toString(holdArray));
-	return rightCount;
-}
-
-public static int[] drawNumbers() throws Exception {
-	Random rand = new Random();             //random object declare
-	int[] drawArray = new int [6];          //Array for drawn numbers
-	for (int i = 0; i < 6; i++) {
-		drawArray[i] = rand.nextInt(20) + 1;    //Add random value between 1-20 to array
-		for (int j = 0; j < i; j++) {
-			if (drawArray[i] == drawArray[j]) i--;    // check if numbers already exist - if yes jump 1 back in array and add new number
-		}
-	}
-	Arrays.sort(drawArray);         //Sort array for pleasure
-	return(drawArray);
 }
 
 public static int[] userNumbers() throws Exception {
@@ -70,6 +44,29 @@ public static int[] userNumbers() throws Exception {
 	return userArray;
 }
 
+public static int[] drawNumbers() throws Exception {
+	Random rand = new Random();             //random object declare
+	int[] drawArray = new int [6];          //Array for drawn numbers
+	for (int i = 0; i < 6; i++) {
+		drawArray[i] = rand.nextInt(20) + 1;    //Add random value between 1-20 to array
+		for (int j = 0; j < i; j++) {
+			if (drawArray[i] == drawArray[j]) i--;    // check if numbers already exist - if yes jump 1 back in array and add new number
+		}
+	}
+	Arrays.sort(drawArray);         //Sort array for pleasure
+	return(drawArray);
+}
+
+public static int compare(int[] holdArray, int[] holdUserArray) throws Exception {
+	int rightCount = 0;
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 6; j++) {
+			if (holdUserArray[i] == holdArray[j]) rightCount++;
+		}
+	}
+	return rightCount;
+}
+
 public static String winCheck(int a){
 	switch (a) {
 	case 0: return "You win " + 0;
@@ -85,7 +82,6 @@ public static String winCheck(int a){
 public static void Print(int[] userArray, int[] holdArray, int win) throws Exception {
 	System.out.print("Your numbers are: \t");
 	for (int i : userArray) System.out.printf("%-3d", i);
-
 
 	System.out.printf("\nDrawn numbers are: \t");
 	for (int i = 0; i < 6; i++) {
