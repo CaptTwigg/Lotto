@@ -5,6 +5,7 @@ public class lotto {
 public static void main(String[] args) throws Exception {
 	int secondGame = 0;
 
+	intro();
 	while (play(secondGame)) {                 //Wanna play again loop
 		secondGame = 1;
 		int[] holdArray = drawNumbers();                // Create new array from drawNumbers method, done so the array is the same in other methods
@@ -92,6 +93,7 @@ public static String winCheck(int a){
 
 // Print all statitics from lotto
 public static void Print(int[] userArray, int[] holdArray, int win) throws Exception {
+	Thread.sleep(300);
 	System.out.print("Your numbers are: \t");               //Print user numbers
 	for (int i : userArray) System.out.printf("%-3d", i);
 
@@ -104,14 +106,32 @@ public static void Print(int[] userArray, int[] holdArray, int win) throws Excep
 	System.out.println(winCheck(win));              //Prints win amount
 }
 
-public static boolean play(int secondGame){
+public static boolean play(int secondGame) throws Exception {
 	Scanner scan = new Scanner(System.in);
 
 	if (secondGame == 0) System.out.print("Wanna play? y/n: "); // If first game
 	else System.out.print("Wanna play again? y/n: ");       //if !first game
 	String answear = scan.next();
+	Thread.sleep(300);
 
-	if (!answear.equals("y")) return false; //if ! "y" stop while loop at top
+	if (!answear.equals("y")) {
+		System.out.println("Goodbye");
+		return false;  //if ! "y" stop while loop at top
+	}
 	return true;
+}
+public static void intro() throws Exception {
+	for (int i = 0; i < 9; i++) {
+		if (i == 0) System.out.println("*************************");
+		if (i == 1) System.out.println("* /                  \\ *");
+		if (i == 2) System.out.println("*/                    \\*");
+		if (i == 3) System.out.println("*  ******************  *");
+		if (i == 4) System.out.println("*  *Welcome to LOTTO*  *");
+		if (i == 5) System.out.println("*  ******************  *");
+		if (i == 6) System.out.println("*\\                    /*");
+		if (i == 7) System.out.println("* \\                  / *");
+		if (i == 8) System.out.println("*************************");
+		Thread.sleep(300);
+	}
 }
 }
