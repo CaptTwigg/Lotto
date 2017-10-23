@@ -16,7 +16,7 @@ public static void main(String[] args) throws Exception {
 
 public static int[] userNumbers() throws Exception {
 	Scanner scan = new Scanner(System.in);
-	int number;
+	int number = 0;
 	int[] userArray = new int[6];
 
 	System.out.print("Want your own numbers? y/n ");
@@ -24,7 +24,7 @@ public static int[] userNumbers() throws Exception {
 
 	//If yes user want own numbers, go through loop to get number between 1-20 and check if number is duplicate or already exist
 	if (choose.equals("y")) {
-		System.out.println("Pick 6 non-identical numbers between 1 to 20");
+		System.out.println("Pick 6 non-identical numbers between 1 & 20");
 
 		for (int i = 0; i < 6; i++) {
 			System.out.print("Type a number: ");
@@ -120,6 +120,7 @@ public static boolean play(int secondGame) throws Exception {
 	}
 	return true;
 }
+
 public static void intro() throws Exception {
 	for (int i = 0; i < 9; i++) {
 		if (i == 0) System.out.println("*************************");
